@@ -1,0 +1,42 @@
+<section class="container mt-3">
+  <div class="card">
+    <div class="card-header bg-light h4 text-primary">
+      {{title}}
+    </div>
+    <form>
+      <div class="form-group my-2 mx-3 d-flex flex-row align-items-center">
+        <label for="filtro" class="p-0 m-0">Filtra:</label>
+        <input type="text" class="form-control ml-2" id="filtro" name="filtro" placeholder="" [(ngModel)]="filterText">
+      </div>
+      <p class="ml-3">You are trying to filter for: {{filterText}}</p>
+    </form>
+    <table class="table mb-0" *ngIf="filteredDoghouses && filteredDoghouses.length > 0">
+      <thead>
+      <tr class="row bg-light m-0">
+        <th scope="col" class="col-4">
+          <span class="btn btn-secondary" role="button" (click)="toggleDescription()">
+            {{showDescription ? 'I know enough thx' : 'Tell me more pls'}}
+          </span>
+        </th>
+        <th scope="col" class="col-2">Name</th>
+        <th scope="col" class="col-2">Motto</th>
+        <th scope="col" class="col-1">Number of residents</th>
+        <th scope="col" class="col-2">Head-dog</th>
+        <th scope="col" class="col-1">Avg goodness rating</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="row m-0" *ngFor="let house of filteredDoghouses">
+        <td class="col-4" [style.backgroundColor]="house.color">
+          <span [innerText]="house.description" *ngIf="showDescription"></span>
+        </td>
+        <td class="col-2">{{house.name | titlecase}}</td>
+        <td class="col-2">{{house.motto | replaceChar : '-' : ' ' | titlecase}}</td>
+        <td class="col-1">{{house.dogIds.length}}</td>
+        <td class="col-2">{{house.headDog}}</td>
+        <td class="col-1">{{house.averageRating}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

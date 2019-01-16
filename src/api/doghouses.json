@@ -1,0 +1,33 @@
+[
+  {
+    "shelfId": 1,
+    "name": "Floofer Land",
+    "motto": "woof-woof",
+    "description": "Floof for days",
+    "dogIds": [
+      2,
+      151,
+      62,
+      232,
+      226
+    ],
+    "headDog": "Ganwoof the Grey",
+    "averageRating": 4.3,
+    "color": "lightseagreen"
+  },
+  {
+    "shelfId": 3,
+    "name": "Pupper Heaven",
+    "motto": "bork-bork",
+    "description": "Smol but growing strong",
+    "dogIds": [
+      89,
+      291,
+      3,
+      72,
+      237,
+      206,
+      53,
+      286
+    ]
+  }

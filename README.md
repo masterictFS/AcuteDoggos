@@ -1,6 +1,10 @@
-# NgBooks
+# AcuteDoggos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
+This project was initially generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
+
+Mock application used to learn Angular.
+
+Dog pics kindly provided by [/r/rarepuppers](https://www.reddit.com/r/rarepuppers).
 
 ## Development server
 
