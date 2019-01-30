@@ -10,6 +10,9 @@ import { ReplaceCharPipe } from './common/replace-char.pipe';
 import { CustomSplitPipe } from './common/custom-split.pipe';
 import { PawRatingComponent } from './common/paw-rating.component';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {NotFoundComponent} from './common/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,21 @@ import {HttpClientModule} from '@angular/common/http';
     DogListComponent,
     ReplaceCharPipe,
     CustomSplitPipe,
-    PawRatingComponent
+    PawRatingComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path: 'home', component: HomeComponent},
+      {path: 'doghouses', component: DoghouseListComponent},
+      {path: 'dogs', component: DogListComponent},
+      {path: '', redirectTo: '/home', pathMatch: 'full'},
+      {path: '**', component: NotFoundComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
