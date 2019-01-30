@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {HouseService} from '../common/house.service';
+import {IHouse} from '../model/IHouse';
 
 @Component({
   selector: 'app-doghouse-list',
@@ -25,47 +27,11 @@ export class DoghouseListComponent {
     this.applyFilter(this._filterText);
   }
 
-  constructor() {
+  constructor(private service: HouseService) {
     this.title = 'The Doggo Neighborhood™';
     // this._filterText = 'Hamburgers';
     this.showDescription = false;
-    this.doghouses = [
-      {
-        'houseId': 1,
-        'name': 'Floofer Land',
-        'motto': 'woof-woof',
-        'description': 'Floof for days',
-        'dogIds': [
-          2,
-          151,
-          62,
-          232,
-          226
-        ],
-        'headDog': 'Ganwoof the Grey',
-        'averageRating': 4.3,
-        'color': 'lightseagreen'
-      },
-      {
-        'houseId': 3,
-        'name': 'Pupper Heaven',
-        'motto': 'bork-bork',
-        'description': 'Smol but growing strong',
-          'dogIds': [
-      89,
-      291,
-      3,
-      72,
-      237,
-      206,
-      53,
-      286
-    ],
-      'headDog': 'Miss Marple',
-      'averageRating': 3.5,
-      'color': 'gold'
-  }
-  ];
+    this.doghouses = service.getAllHouses();
     this.filteredDoghouses = this.doghouses.map(house => house);
   }
 
@@ -90,7 +56,7 @@ export class DoghouseListComponent {
     this.showDogList = 0;
   }
 
-  getSelectedHouse() {
+  getSelectedHouse(): IHouse {
     return this.filteredDoghouses.find(house => house.houseId === this.showDogList);
   }
 
