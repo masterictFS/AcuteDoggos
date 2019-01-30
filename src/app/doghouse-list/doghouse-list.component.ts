@@ -27,12 +27,12 @@ export class DoghouseListComponent {
     this.applyFilter(this._filterText);
   }
 
-  constructor(private service: HouseService) {
+  constructor(private houseService: HouseService) {
     this.title = 'The Doggo Neighborhood™';
     // this._filterText = 'Hamburgers';
     this.showDescription = false;
 
-    service.getAllHouses().subscribe(houses => {
+    houseService.getAllHouses().subscribe(houses => {
       this.doghouses = houses;
       this.filteredDoghouses = this.doghouses.map(house => house);
     });

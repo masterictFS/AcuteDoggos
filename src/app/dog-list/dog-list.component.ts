@@ -19,14 +19,14 @@ export class DogListComponent implements OnInit, OnChanges {
 
   @Output() closed: EventEmitter<boolean>;
 
-  constructor(private service: DogService) {
+  constructor(private dogService: DogService) {
     this.title = 'All the doggos';
     this.filterText = 'French fries';
     this.showPictures = false;
 
     this.closed = new EventEmitter<boolean>();
 
-    this.dogs = service.getAllDogs();
+    this.dogs = dogService.getAllDogs();
   }
 
   togglePictures() {
@@ -51,7 +51,7 @@ export class DogListComponent implements OnInit, OnChanges {
     if (this.dogHouse) {
       this.filterDogsByHouse(this.dogHouse);
     } else {
-      this.dogs = this.service.getAllDogs();
+      this.dogs = this.dogService.getAllDogs();
     }
   }
 
@@ -60,17 +60,14 @@ export class DogListComponent implements OnInit, OnChanges {
       if (this.dogHouse) {
         this.filterDogsByHouse(this.dogHouse);
       } else {
-        this.dogs = this.service.getAllDogs();
+        this.dogs = this.dogService.getAllDogs();
       }
     }
   }
 
   private filterDogsByHouse(dogHouse: IHouse): void {
-
-    this.service.getDogsInHouse(dogHouse.houseId).subscribe(
+    this.dogService.getDogsInHouse(dogHouse.houseId).subscribe(
       dogs => this.dogs = dogs
     );
-
-    // this.dogs = this.service.getDogsInHouse(dogHouse.houseId);
   }
 }

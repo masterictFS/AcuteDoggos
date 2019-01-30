@@ -29,7 +29,6 @@ export class HouseService {
   }
 
   getAllHouses(): Observable<IHouse[]> {
-    // return this.doghouses.map(h => h);
     return this.http.get<IHouse[]>(this.allHousesUrl).pipe(
       tap(data => console.log(JSON.stringify(data))),
       catchError(this.errorHandler)
@@ -37,7 +36,6 @@ export class HouseService {
   }
 
   getHouse(id: number): Observable<IHouse> {
-    // return this.doghouses.find(house => house.houseId === id);
     return this.http.get<IHouse>(this.houseBaseUrl + id + '.json').pipe(
       tap(data => console.log(JSON.stringify(data))),
       catchError(this.errorHandler)
