@@ -25,7 +25,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr class="row m-0" *ngFor="let house of filteredDoghouses">
+      <tr class="row m-0" *ngFor="let house of filteredDoghouses" (click)="setSelectedHouse(house.houseId)">
         <td class="col-4" [style.backgroundColor]="house.color">
           <span [innerText]="house.description" *ngIf="showDescription"></span>
         </td>
@@ -33,9 +33,14 @@
         <td class="col-2">{{house.motto | replaceChar : '-' : ' ' | titlecase}}</td>
         <td class="col-1">{{house.dogIds.length}}</td>
         <td class="col-2">{{house.headDog}}</td>
-        <td class="col-1">{{house.averageRating}}</td>
+        <td class="col-1"><app-star-rating [rating]="house.averageRating"
+        (activated)="onStarRatingActivated($event, house)"></app-star-rating></td>
+        <!--<app-dog-list *ngIf="showDogList === house.houseId" [dogHouse]="house" [closeable]="true"
+            (closed)="closeDogList()" ></app-dog-list> -->
       </tr>
       </tbody>
+      <app-dog-list *ngIf="showDogList" [dogHouse]="getSelectedHouse()" [closeable]="true"
+                    (closed)="closeDogList()" ></app-dog-list>
     </table>
   </div>
 </section>

@@ -8,6 +8,7 @@ import { DogListComponent } from './dog-list/dog-list.component';
 import {FormsModule} from '@angular/forms';
 import { ReplaceCharPipe } from './common/replace-char.pipe';
 import { CustomSplitPipe } from './common/custom-split.pipe';
+import { PawRatingComponent } from './common/paw-rating.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CustomSplitPipe } from './common/custom-split.pipe';
     DoghouseListComponent,
     DogListComponent,
     ReplaceCharPipe,
-    CustomSplitPipe
+    CustomSplitPipe,
+    PawRatingComponent
   ],
   imports: [
     BrowserModule,

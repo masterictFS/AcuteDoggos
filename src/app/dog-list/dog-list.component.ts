@@ -1,20 +1,28 @@
-import { Component} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-dog-list',
   templateUrl: './dog-list.component.html',
   styleUrls: ['./dog-list.component.css']
 })
-export class DogListComponent {
+export class DogListComponent implements OnInit {
   title: string;
   filterText: string;
   showPictures: boolean;
   dogs: any[];
 
+  @Input() dogHouse: any;
+  @Input() closeable: boolean;
+
+  @Output() closed: EventEmitter<boolean>;
+
   constructor() {
     this.title = 'All the doggos';
     this.filterText = 'French fries';
     this.showPictures = false;
+
+    this.closed = new EventEmitter<boolean>();
+
     this.dogs = [
       {
         'dogId': 2,
@@ -152,5 +160,27 @@ export class DogListComponent {
 
   togglePictures() {
     this.showPictures = !this.showPictures;
+  }
+
+  onStarRatingActivated(value: number, dog: any): void {
+    dog.goodnessRating -= 0.1;
+    if (dog.goodnessRating < 0) {
+      dog.goodnessRating = 0;
+    }
+  }
+
+  close(event: MouseEvent) {
+    // if the component is contained in a table row i stop its propagation
+    // in order not to trigger further events
+    event.stopPropagation();
+    this.closed.emit(true);
+  }
+
+  ngOnInit(): void {
+    this.filterDogsByHouse(this.dogHouse);
+  }
+
+  private filterDogsByHouse(dogHouse: any) {
+    this.dogs = this.dogs.filter(dog => dogHouse.dogIds.includes(dog.dogId));
   }
 }

@@ -13,6 +13,8 @@ export class DoghouseListComponent {
   doghouses: any[];
   filteredDoghouses: any[];
 
+  showDogList = 0;
+
   get filterText() {
     return this._filterText;
   }
@@ -25,11 +27,11 @@ export class DoghouseListComponent {
 
   constructor() {
     this.title = 'The Doggo Neighborhood™';
-    this._filterText = 'Hamburgers';
+    // this._filterText = 'Hamburgers';
     this.showDescription = false;
     this.doghouses = [
       {
-        'shelfId': 1,
+        'houseId': 1,
         'name': 'Floofer Land',
         'motto': 'woof-woof',
         'description': 'Floof for days',
@@ -45,7 +47,7 @@ export class DoghouseListComponent {
         'color': 'lightseagreen'
       },
       {
-        'shelfId': 3,
+        'houseId': 3,
         'name': 'Pupper Heaven',
         'motto': 'bork-bork',
         'description': 'Smol but growing strong',
@@ -77,4 +79,22 @@ export class DoghouseListComponent {
     }
   }
 
+  onStarRatingActivated(value: number, dogHouse: any): void {
+    dogHouse.averageRating += 0.1;
+    if (dogHouse.averageRating > 5) {
+      dogHouse.averageRating = 5;
+    }
+  }
+
+  closeDogList() {
+    this.showDogList = 0;
+  }
+
+  getSelectedHouse() {
+    return this.filteredDoghouses.find(house => house.houseId === this.showDogList);
+  }
+
+  setSelectedHouse(id: number) {
+    this.showDogList = id;
+  }
 }
