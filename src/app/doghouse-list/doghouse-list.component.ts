@@ -37,7 +37,7 @@ export class DoghouseListComponent {
       this.filteredDoghouses = this.doghouses.map(house => house);
     });
 
-    // TODO il filtro potrebbe essere ancora semi rotto
+    // TODO filter could still be broken
   }
 
   toggleDescription(): void {
