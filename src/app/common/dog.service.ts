@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {IDog} from '../model/IDog';
 import {HouseService} from './house.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -154,8 +156,10 @@ export class DogService {
     return this.dogs.find(dog => dog.dogId === id);
   }
 
-  getDogsInHouse(houseId: number): IDog[] {
-    const house = this.houseService.getHouse(houseId);
-    return this.dogs.filter(dog => house.dogIds.includes(dog.dogId));
+  getDogsInHouse(houseId: number): Observable<IDog[]> {
+    return this.houseService.getHouse(houseId).pipe(map(
+      house => this.dogs.filter(dog => house.dogIds.includes(dog.dogId))
+    ));
+    // return this.dogs.filter(dog => house.dogIds.includes(dog.dogId));
   }
 }

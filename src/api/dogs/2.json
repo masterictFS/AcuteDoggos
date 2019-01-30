@@ -1,0 +1,10 @@
+{
+  "dogId": 2,
+  "nickname": "The Lord of the Floofers",
+  "realName": "J.R.R. Tolkien",
+  "dateOfBirth": "7 giugno 2017",
+  "netWorth": 16.91,
+  "goodnessRating": 4.4,
+  "pictureUrl": "./api/img/2.jpg",
+  "bankAccountNumber": "9788812340026"
+}

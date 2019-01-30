@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { ReplaceCharPipe } from './common/replace-char.pipe';
 import { CustomSplitPipe } from './common/custom-split.pipe';
 import { PawRatingComponent } from './common/paw-rating.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PawRatingComponent } from './common/paw-rating.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -66,6 +66,11 @@ export class DogListComponent implements OnInit, OnChanges {
   }
 
   private filterDogsByHouse(dogHouse: IHouse): void {
-    this.dogs = this.service.getDogsInHouse(dogHouse.houseId);
+
+    this.service.getDogsInHouse(dogHouse.houseId).subscribe(
+      dogs => this.dogs = dogs
+    );
+
+    // this.dogs = this.service.getDogsInHouse(dogHouse.houseId);
   }
 }

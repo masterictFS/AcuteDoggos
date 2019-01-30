@@ -1,0 +1,19 @@
+{
+  "houseId": 3,
+  "name": "Pupper Heaven",
+  "motto": "bork-bork",
+  "description": "Smol but growing strong",
+  "dogIds": [
+    89,
+    291,
+    3,
+    72,
+    237,
+    206,
+    53,
+    286
+  ],
+  "headDog": "Miss Marple",
+  "averageRating": 3.5,
+  "color": "gold"
+}

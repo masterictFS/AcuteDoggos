@@ -31,8 +31,13 @@ export class DoghouseListComponent {
     this.title = 'The Doggo Neighborhood™';
     // this._filterText = 'Hamburgers';
     this.showDescription = false;
-    this.doghouses = service.getAllHouses();
-    this.filteredDoghouses = this.doghouses.map(house => house);
+
+    service.getAllHouses().subscribe(houses => {
+      this.doghouses = houses;
+      this.filteredDoghouses = this.doghouses.map(house => house);
+    });
+
+    // TODO il filtro potrebbe essere ancora semi rotto
   }
 
   toggleDescription(): void {

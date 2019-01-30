@@ -1,11 +1,11 @@
 <section class="container">
   <div class="card">
     <div class="card-header bg-light h4 text-primary">
-      {{title}}
+      {{(dogHouse ? dogHouse.name : title)}}
+      <div class="close" role="button" aria-label="Close" (click)="close($event)" *ngIf="closeable">
+        &times;
+      </div>
     </div>
-    <span class="btn btn-info" role="button" (click)="close($event)" *ngIf="closeable">
-          {{'close me'}}
-    </span>
     <div class="d-flex flex-row align-items-center justify-content-between">
       <form class="ml-2 d-flex flex-row align-items-center">
         <div class="form-group my-2 mx-3 d-flex flex-row align-items-center">

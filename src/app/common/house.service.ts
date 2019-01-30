@@ -1,56 +1,46 @@
 import { Injectable } from '@angular/core';
 import {IHouse} from '../model/IHouse';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HouseService {
-  houses: IHouse[];
-  constructor() {
-    this.houses = [
-      {
-        'houseId': 1,
-        'name': 'Floofer Land',
-        'motto': 'woof-woof',
-        'description': 'Floof for days',
-        'dogIds': [
-          2,
-          151,
-          62,
-          232,
-          226
-        ],
-        'headDog': 'Ganwoof the Grey',
-        'averageRating': 4.3,
-        'color': 'lightseagreen'
-      },
-      {
-        'houseId': 3,
-        'name': 'Pupper Heaven',
-        'motto': 'bork-bork',
-        'description': 'Smol but growing strong',
-        'dogIds': [
-          89,
-          291,
-          3,
-          72,
-          237,
-          206,
-          53,
-          286
-        ],
-        'headDog': 'Miss Marple',
-        'averageRating': 3.5,
-        'color': 'gold'
+  allHousesUrl = 'api/doghouses.json';
+  houseBaseUrl = 'api/doghouses/';
+
+  errorHandler: (err: HttpErrorResponse) => Observable<any>;
+
+  constructor(private http: HttpClient) {
+
+    this.errorHandler = function (err: HttpErrorResponse): Observable<any> {
+      let errorMessage = '';
+      if (err instanceof ErrorEvent) {
+        // client-side or network error
+        errorMessage = 'Something bad happened. Save yourself.';
+      } else {
+        // server-side error
+        errorMessage = 'The server goofed: ' + err.status + ' and says: ' + err.message;
       }
-    ];
+      return throwError(errorMessage);
+    };
   }
 
-  getAllHouses(): IHouse[] {
-    return this.houses.map(h => h);
+  getAllHouses(): Observable<IHouse[]> {
+    // return this.doghouses.map(h => h);
+    return this.http.get<IHouse[]>(this.allHousesUrl).pipe(
+      tap(data => console.log(JSON.stringify(data))),
+      catchError(this.errorHandler)
+    );
   }
 
-  getHouse(id: number): IHouse {
-    return this.houses.find(house => house.houseId === id);
+  getHouse(id: number): Observable<IHouse> {
+    // return this.doghouses.find(house => house.houseId === id);
+    return this.http.get<IHouse>(this.houseBaseUrl + id + '.json').pipe(
+      tap(data => console.log(JSON.stringify(data))),
+      catchError(this.errorHandler)
+    );
   }
 }

@@ -1,6 +1,6 @@
 [
   {
-    "shelfId": 1,
+    "houseId": 1,
     "name": "Floofer Land",
     "motto": "woof-woof",
     "description": "Floof for days",
@@ -16,7 +16,7 @@
     "color": "lightseagreen"
   },
   {
-    "shelfId": 3,
+    "houseId": 3,
     "name": "Pupper Heaven",
     "motto": "bork-bork",
     "description": "Smol but growing strong",
@@ -29,5 +29,9 @@
       206,
       53,
       286
-    ]
+    ],
+    "headDog": "Miss Marple",
+    "averageRating": 3.5,
+    "color": "gold"
   }
+]
