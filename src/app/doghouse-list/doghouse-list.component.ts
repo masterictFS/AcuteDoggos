@@ -71,9 +71,9 @@ export class DoghouseListComponent {
     this.showDescription = !this.showDescription;
   }
 
-  applyFilter(filter: string): void {
-    if (filter && filter.length > 0) {
-      this.filteredDoghouses = this.doghouses.filter(house => house.name.indexOf(filter) >= 0);
+  applyFilter(filterText: string): void {
+    if (filterText && filterText.length > 0) {
+      this.filteredDoghouses = this.doghouses.filter(house => house.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0);
     }
   }
 

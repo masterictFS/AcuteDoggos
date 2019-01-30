@@ -5,10 +5,9 @@
     </div>
     <form>
       <div class="form-group my-2 mx-3 d-flex flex-row align-items-center">
-        <label for="filtro" class="p-0 m-0">Filtra:</label>
+        <label for="filtro" class="p-0 m-0">Filter:</label>
         <input type="text" class="form-control ml-2" id="filtro" name="filtro" placeholder="" [(ngModel)]="filterText">
       </div>
-      <p class="ml-3">You are trying to filter for: {{filterText}}</p>
     </form>
     <table class="table mb-0" *ngIf="filteredDoghouses && filteredDoghouses.length > 0">
       <thead>

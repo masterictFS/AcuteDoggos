@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import { OverviewComponent } from './overview/overview.component';
 import { DoghouseListComponent } from './doghouse-list/doghouse-list.component';
 import { DogListComponent } from './dog-list/dog-list.component';
-import {FormsModule, NgModel} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { ReplaceCharPipe } from './common/replace-char.pipe';
+import { CustomSplitPipe } from './common/custom-split.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReplaceCharPipe } from './common/replace-char.pipe';
     OverviewComponent,
     DoghouseListComponent,
     DogListComponent,
-    ReplaceCharPipe
+    ReplaceCharPipe,
+    CustomSplitPipe
   ],
   imports: [
     BrowserModule,
